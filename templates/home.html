@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>CoreJunkie Product Tracker</h1>
+<p class="muted">Configurable base path: <code>{{ base_path }}</code>.</p>
+{% if current_user %}
+<p>Welcome, <strong>{{ current_user.display_name }}</strong> ({{ current_user.email }}).</p>
+<p><a href="{{ base_path }}/dashboard">Go to dashboard</a></p>
+{% else %}
+<p>Please login or register to start tracking purchases and run-out dates.</p>
+{% endif %}
+{% endblock %}

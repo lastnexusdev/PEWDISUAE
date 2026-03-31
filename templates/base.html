@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>{{ title or 'CoreJunkie App' }}</title>
+    <style>
+      body { font-family: Arial, sans-serif; max-width: 980px; margin: 24px auto; }
+      .row { display: flex; gap: 12px; }
+      input, select, button { padding: 8px; margin: 4px 0; }
+      table { width: 100%; border-collapse: collapse; margin-top: 12px; }
+      td, th { border: 1px solid #ddd; padding: 8px; font-size: 14px; }
+      nav a { margin-right: 12px; }
+      .muted { color: #666; }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <a href="{{ base_path }}/">Home</a>
+      {% if current_user %}
+      <a href="{{ base_path }}/dashboard">Dashboard</a>
+      <a href="{{ base_path }}/products/new">New Product</a>
+      <a href="{{ base_path }}/inventory/new">New Inventory</a>
+      <form action="{{ base_path }}/logout" method="post" style="display:inline;"><button>Logout</button></form>
+      {% else %}
+      <a href="{{ base_path }}/login">Login</a>
+      <a href="{{ base_path }}/register">Register</a>
+      {% endif %}
+    </nav>
+    <hr />
+    {% block content %}{% endblock %}
+  </body>
+</html>

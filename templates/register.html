@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Register</h2>
+<form method="post" action="{{ base_path }}/register">
+  <div><input name="display_name" placeholder="Display name" required /></div>
+  <div><input name="email" placeholder="Email" required type="email" /></div>
+  <div><input name="password" placeholder="Password (8+ chars)" required type="password" minlength="8"/></div>
+  <button type="submit">Create account</button>
+</form>
+{% if error %}<p style="color:crimson;">{{ error }}</p>{% endif %}
+{% endblock %}
