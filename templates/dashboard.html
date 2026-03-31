@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Your Inventory</h2>
+<table>
+  <thead>
+    <tr>
+      <th>Product</th><th>Purchased</th><th>Opened</th><th>Cadence</th><th>Amount/Use</th><th>Expected Run Out</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for row in rows %}
+      <tr>
+        <td>{{ row.product.name }}</td>
+        <td>{{ row.purchased_at }}</td>
+        <td>{{ row.opened_at or '-' }}</td>
+        <td>{{ row.cadence_value or '-' }} {{ row.cadence_unit or '' }}</td>
+        <td>{{ row.amount_per_use or '-' }}</td>
+        <td>{{ row.expected_run_out_at or '-' }}</td>
+      </tr>
+    {% else %}
+      <tr><td colspan="6">No items yet.</td></tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}
